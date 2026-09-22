@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunrise Bakery — Fresh Baked Daily in Austin, TX</title>
+<meta name="description" content="Sunrise Bakery in Austin, Texas. Fresh bread, pastries and cakes baked every morning. Open 7am to 3pm, closed Mondays. 412 Oak Street.">
+<style>
+  :root{
+    --crust:#8a4b22;
+    --crust-dark:#5e3216;
+    --butter:#f7c352;
+    --cream:#fffaf2;
+    --dough:#f4e7d3;
+    --ink:#33241a;
+    --ink-soft:#6b5748;
+    --line:#e5d3ba;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-text-size-adjust:100%;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    padding:0 22px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 18% 12%, rgba(247,195,82,.38), transparent 55%),
+      radial-gradient(circle at 85% 8%, rgba(247,195,82,.22), transparent 50%),
+      linear-gradient(170deg, var(--dough) 0%, #fdf4e7 70%, var(--cream) 100%);
+    border-bottom:1px solid var(--line);
+    padding:64px 0 56px;
+    text-align:center;
+  }
+
+  .sun{
+    display:block;
+    margin:0 auto 22px;
+    width:66px;
+    height:66px;
+  }
+
+  .hero h1{
+    margin:0;
+    font-size:clamp(2.4rem, 11vw, 4rem);
+    line-height:1.05;
+    letter-spacing:-.5px;
+    color:var(--crust-dark);
+  }
+
+  .hero h1 span{
+    display:block;
+  }
+
+  .tagline{
+    margin:14px auto 0;
+    max-width:36ch;
+    font-size:1.08rem;
+    font-style:italic;
+    color:var(--ink-soft);
+  }
+
+  .hours{
+    display:inline-block;
+    margin-top:30px;
+    padding:18px 26px;
+    background:rgba(255,255,255,.75);
+    border:1px solid var(--line);
+    border-radius:14px;
+    text-align:left;
+  }
+
+  .hours dl{
+    margin:0;
+    display:grid;
+    grid-template-columns:auto auto;
+    gap:6px 20px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.95rem;
+  }
+
+  .hours dt{
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:.78rem;
+    align-self:center;
+  }
+
+  .hours dd{
+    margin:0;
+    font-weight:600;
+    color:var(--crust-dark);
+    white-space:nowrap;
+  }
+
+  .hours dd.closed{
+    color:#a3352a;
+  }
+
+  .cta{
+    display:block;
+    margin-top:28px;
+  }
+
+  .cta a{
+    display:inline-block;
+    padding:14px 30px;
+    background:var(--crust);
+    color:#fff;
+    text-decoration:none;
+    border-radius:999px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-weight:600;
+    font-size:.98rem;
+    letter-spacing:.01em;
+    box-shadow:0 6px 16px rgba(138,75,34,.22);
+  }
+
+  .cta a:hover,.cta a:focus{
+    background:var(--crust-dark);
+  }
+
+  /* ---------- Sections ---------- */
+  section{
+    padding:56px 0;
+  }
+
+  .section-head{
+    text-align:center;
+    margin-bottom:34px;
+  }
+
+  .eyebrow{
+    display:block;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.74rem;
+    font-weight:700;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--butter);
+    filter:brightness(.78);
+    margin-bottom:8px;
+  }
+
+  h2{
+    margin:0;
+    font-size:clamp(1.7rem, 6.5vw, 2.3rem);
+    color:var(--crust-dark);
+    letter-spacing:-.3px;
+  }
+
+  /* ---------- Menu ---------- */
+  .menu{
+    background:var(--dough);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+
+  .menu ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .menu li{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:0 10px;
+    padding:18px 0;
+    border-bottom:1px dashed rgba(138,75,34,.28);
+  }
+
+  .menu li:last-child{
+    border-bottom:0;
+  }
+
+  .item-name{
+    font-size:1.12rem;
+    font-weight:600;
+    color:var(--crust-dark);
+    flex:0 1 auto;
+    min-width:0;
+  }
+
+  /* own full-width row, so a long description never pushes the price off the line */
+  .item-desc{
+    flex:1 0 100%;
+    font-size:.92rem;
+    font-weight:400;
+    font-style:italic;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
+
+  .dots{
+    flex:1 1 auto;
+    border-bottom:1px dotted rgba(138,75,34,.4);
+    min-width:14px;
+    transform:translateY(-4px);
+  }
+
+  .price{
+    flex:0 0 auto;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--crust);
+  }
+
+  .menu-note{
+    margin:28px 0 0;
+    text-align:center;
+    font-size:.92rem;
+    font-style:italic;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px;
+    text-align:center;
+  }
+
+  .card h3{
+    margin:0 0 10px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.76rem;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  .card p{
+    margin:0;
+    font-size:1.16rem;
+    line-height:1.5;
+    color:var(--crust-dark);
+    font-weight:600;
+  }
+
+  .card a{
+    display:inline-block;
+    /* keeps the link a comfortable thumb-sized tap target on a phone */
+    padding:8px 4px;
+    color:var(--crust);
+    text-decoration:none;
+    border-bottom:1px solid rgba(138,75,34,.35);
+  }
+
+  .card a:hover,.card a:focus{
+    color:var(--crust-dark);
+  }
+
+  .card small{
+    display:block;
+    margin-top:8px;
+    font-size:.88rem;
+    font-weight:400;
+    font-style:italic;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--crust-dark);
+    color:rgba(255,255,255,.75);
+    text-align:center;
+    padding:30px 0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.86rem;
+  }
+
+  footer p{margin:0;}
+
+  footer .fine{
+    margin-top:6px;
+    font-size:.8rem;
+    color:rgba(255,255,255,.5);
+  }
+
+  /* ---------- Phones ---------- */
+  @media (max-width:620px){
+    body{font-size:16px;}
+
+    .hero{padding:46px 0 42px;}
+
+    .sun{width:54px;height:54px;}
+
+    .hours{
+      display:block;
+      margin-top:26px;
+      padding:16px 18px;
+    }
+
+    .hours dl{
+      grid-template-columns:1fr;
+      gap:2px;
+      text-align:center;
+    }
+
+    .hours dt{margin-top:8px;}
+
+    .hours dt:first-child{margin-top:0;}
+
+    section{padding:42px 0;}
+
+    .menu li{padding:16px 0;}
+
+    /* no room for leader dots on a phone — push the price to the right edge instead */
+    .dots{display:none;}
+
+    .price{margin-left:auto;}
+
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <!-- inline SVG sun: no external files, so the page works offline -->
+    <svg class="sun" viewBox="0 0 100 100" role="img" aria-label="Sunrise Bakery logo">
+      <circle cx="50" cy="50" r="22" fill="#f7c352"/>
+      <g stroke="#8a4b22" stroke-width="5" stroke-linecap="round">
+        <line x1="50" y1="6"  x2="50" y2="18"/>
+        <line x1="50" y1="82" x2="50" y2="94"/>
+        <line x1="6"  y1="50" x2="18" y2="50"/>
+        <line x1="82" y1="50" x2="94" y2="50"/>
+        <line x1="19" y1="19" x2="27" y2="27"/>
+        <line x1="73" y1="73" x2="81" y2="81"/>
+        <line x1="19" y1="81" x2="27" y2="73"/>
+        <line x1="73" y1="27" x2="81" y2="19"/>
+      </g>
+    </svg>
+
+    <h1><span>Sunrise</span><span>Bakery</span></h1>
+
+    <p class="tagline">Baked fresh every morning in Austin, Texas.</p>
+
+    <div class="hours">
+      <dl>
+        <dt>Tuesday &ndash; Sunday</dt>
+        <dd>7:00 am &ndash; 3:00 pm</dd>
+        <dt>Monday</dt>
+        <dd class="closed">Closed</dd>
+      </dl>
+    </div>
+
+    <p class="cta"><a href="#visit">Come Visit Us</a></p>
+  </div>
+</header>
+
+<main>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">From Our Ovens</span>
+        <h2>The Menu</h2>
+      </div>
+
+      <ul>
+        <li>
+          <span class="item-name">Butter Croissant</span>
+          <span class="dots"></span>
+          <span class="price">$3.75</span>
+          <span class="item-desc">Laminated by hand, baked golden each morning.</span>
+        </li>
+        <li>
+          <span class="item-name">Sourdough Loaf</span>
+          <span class="dots"></span>
+          <span class="price">$8.00</span>
+          <span class="item-desc">Slow-fermented overnight with a crackling crust.</span>
+        </li>
+        <li>
+          <span class="item-name">Cinnamon Roll</span>
+          <span class="dots"></span>
+          <span class="price">$4.50</span>
+          <span class="item-desc">Warm, generous, finished with cream cheese glaze.</span>
+        </li>
+        <li>
+          <span class="item-name">Blueberry Muffin</span>
+          <span class="dots"></span>
+          <span class="price">$3.25</span>
+          <span class="item-desc">Packed with berries and a crunchy sugar top.</span>
+        </li>
+        <li>
+          <span class="item-name">Pecan Coffee Cake</span>
+          <span class="dots"></span>
+          <span class="price">$4.25</span>
+          <span class="item-desc">Texas pecans, brown sugar streusel, by the slice.</span>
+        </li>
+      </ul>
+
+      <p class="menu-note">Fresh out of the oven daily &mdash; when it&rsquo;s gone, it&rsquo;s gone.</p>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Stop By</span>
+        <h2>Find Us</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Address</h3>
+          <p>
+            <a href="https://maps.google.com/?q=412+Oak+Street+Austin+TX" target="_blank" rel="noopener">
+              412 Oak Street<br>Austin, TX
+            </a>
+          </p>
+          <small>Tap for directions</small>
+        </div>
+
+        <div class="card">
+          <h3>Phone</h3>
+          <!-- TODO: replace with Sunrise Bakery's real number (both the href and the text) -->
+          <p><a href="tel:+15125550142">(512) 555-0142</a></p>
+          <small>Call ahead for large orders</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Sunrise Bakery &middot; 412 Oak Street, Austin, TX</p>
+    <p class="fine">Open Tuesday through Sunday, 7am&ndash;3pm. Closed Mondays.</p>
+  </div>
+</footer>
+
+</body>
+</html>
